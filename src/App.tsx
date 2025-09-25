@@ -1,8 +1,16 @@
 
-const App = () => {
-  return (
-    <div>Hello</div>
-  )
-}
+import React from "react";
+import SearchBar from "./components/search/SearchBar";
+import { Box } from "@mui/material";
 
-export default App
+const App: React.FC = () => {
+
+
+  return (
+    <Box style={{ padding: 24, maxWidth: 350 }}>
+      <SearchBar />
+    </Box>
+  );
+};
+
+export default App;
