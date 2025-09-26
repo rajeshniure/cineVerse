@@ -4,7 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 function SearchBar() {
   return (
     <>
-    <Box display={"flex"} alignItems="center" gap={1} >
+    <Box display={"flex"} alignItems="center" gap={1} width={"100%"} >
     <SearchIcon />
     <TextField
       fullWidth
