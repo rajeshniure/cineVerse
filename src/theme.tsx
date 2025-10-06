@@ -11,7 +11,7 @@ const colors = {
 
 
 const typography = {
-  fontFamily: `'Outfit', sans-serif`,
+  fontFamily: `'Outfit Light', sans-serif`,
   h1: {
     fontSize: '32px',
     fontWeight: 300,

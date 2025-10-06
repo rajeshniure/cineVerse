@@ -7,7 +7,7 @@ type PathTitleMap = Record<string, string>;
 const pathTitleMap: PathTitleMap = {
   "/": "Home",
   "/movies": "Movies",
-  "/series": "Series",
+  "/series": "TV Series",
   "/bookmarks": "Bookmarks",
 };
 
@@ -49,10 +49,11 @@ const Layout = () => {
         {/* Page Title */}
         <Typography
           variant="h4"
-          fontWeight={600}
           mt={3}
           mb={2}
           textAlign={"left"}
+          fontFamily={'Outfit Light'}
+          fontSize={'24px'}
         >
           {title}
         </Typography>

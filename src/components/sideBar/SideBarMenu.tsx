@@ -1,20 +1,34 @@
-import { Stack } from "@mui/material"
-import movies from "../../assets/icons/movies.svg"
-import series from "../../assets/icons/tv-series.svg"
-import bookmarks from "../../assets/icons/bookmark.svg"
-import home from "../../assets/icons/home.svg"
-
-
+import { Stack } from "@mui/material";
+import { NavLink } from "react-router-dom";
+import SideBarData from "./SideBarData";
 
 function SideBarMenu() {
   return (
-    <Stack direction={{xs:"row", md:"column"}} spacing={4} mt={{ md:4}}  alignItems="center">
-<img src={home} alt="" style={{width:"15px"}}/>
-<img src={movies} alt="" style={{width:"15px"}}/>
-<img src={series} alt="" style={{width:"15px"}}/>
-<img src={bookmarks} alt="" style={{width:"15px"}}/>
+    <Stack
+      direction={{ xs: "row", md: "column" }}
+      spacing={4}
+      mt={{ md: 4 }}
+      alignItems="center"
+    >
+      {SideBarData.map((item) => (
+        <NavLink
+          key={item.title}
+          to={item.path}
+        >
+            {({ isActive }) => (
+            <img
+              src={item.icon}
+              alt={item.title}
+              style={{ 
+                width:"16px",
+                filter: isActive ? "brightness(0) invert(1)" : "none",
+              }}
+            />
+          )}
+        </NavLink>
+      ))}
     </Stack>
-  )
+  );
 }
 
-export default SideBarMenu
+export default SideBarMenu;
