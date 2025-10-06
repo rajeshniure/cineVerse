@@ -1,8 +1,8 @@
-
+import ThumbnailCard from '../../components/card/Card';
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <ThumbnailCard />
   )
 }
 

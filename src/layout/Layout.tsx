@@ -8,7 +8,7 @@ const pathTitleMap: PathTitleMap = {
   "/": "Home",
   "/movies": "Movies",
   "/series": "TV Series",
-  "/bookmarks": "Bookmarks",
+  "/bookmarks": "Bookmarked Movies",
 };
 
 const Layout = () => {
@@ -29,7 +29,7 @@ const Layout = () => {
         width={{ xs: "100%", md: "100px" }}
         display="flex"
         justifyContent={{ xs: "center", md: "flex-start" }}
-        alignItems="center"
+        alignItems="flex-start"
       >
         <SideBar />
       </Box>
@@ -48,7 +48,6 @@ const Layout = () => {
 
         {/* Page Title */}
         <Typography
-          variant="h4"
           mt={3}
           mb={2}
           textAlign={"left"}

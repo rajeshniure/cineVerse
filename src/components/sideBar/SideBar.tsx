@@ -7,7 +7,7 @@ const SideBar = () => {
   return (
     <Box
       width={{ xs: "100%", md: "80px" }}
-      height={{ xs: "60px", md: "100%" }}
+      height={{ xs: "60px", md: "100vh" }}
       p={{xs:1, md:3}}
       bgcolor="background.paper"
       borderRadius={{xs:0, md:6}}
