@@ -2,6 +2,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import SideBar from "../components/sideBar/SideBar";
 import SearchBar from "../components/search/SearchBar";
+import { useSearch } from "../context/SearchContext";
+import { useEffect } from "react";
 
 type PathTitleMap = Record<string, string>;
 const pathTitleMap: PathTitleMap = {
@@ -13,6 +15,12 @@ const pathTitleMap: PathTitleMap = {
 
 const Layout = () => {
   const location = useLocation();
+
+  const { setSearchTerm } = useSearch();
+
+  useEffect(() => {
+    setSearchTerm("");
+  }, [location.pathname]);
   const title = pathTitleMap[location.pathname] || "Home";
 
   return (

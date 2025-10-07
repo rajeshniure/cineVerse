@@ -15,7 +15,7 @@ createRoot(document.getElementById('root')!).render(
     <BookmarkProvider>
       <SearchProvider>
       <CssBaseline />
-    <App />
+        <App />
       </SearchProvider>
     </BookmarkProvider>
     </ThemeProvider>
