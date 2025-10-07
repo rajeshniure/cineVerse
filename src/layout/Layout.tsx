@@ -5,7 +5,7 @@ import SearchBar from "../components/search/SearchBar";
 
 type PathTitleMap = Record<string, string>;
 const pathTitleMap: PathTitleMap = {
-  "/": "Home",
+  "/": "Trending",
   "/movies": "Movies",
   "/series": "TV Series",
   "/bookmarks": "Bookmarked Movies",

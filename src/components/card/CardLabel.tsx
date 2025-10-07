@@ -5,10 +5,10 @@ import { Stack } from "@mui/material";
 import SideBarData from "../sideBar/SideBarData";
 
 interface ContentCardProps {
-  title: string;
-  year: number;
-  category: string;
-  rating: string;
+  title?: string;
+  year?: number;
+  category?: string;
+  rating?: string;
 }
 const ContentLabel: React.FC<ContentCardProps> = ({
   title,
