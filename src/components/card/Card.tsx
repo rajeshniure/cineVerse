@@ -4,10 +4,26 @@ import CardLabel from "./CardLabel";
 import Grid from "@mui/material/Grid";
 import { content } from "../../content/Content";
 import { Typography } from "@mui/material";
+import { useSearch } from "../../context/SearchContext";
 
 
 export default function ThumbnailCard() {
-  const recommendedContent = content.filter(item => !item.isTrending);
+  const { searchTerm } = useSearch();
+
+  const recommendedContent = content.filter(
+    (item) =>
+      !item.isTrending &&
+      item.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  if (recommendedContent.length === 0) {
+    return (
+      <Typography color="gray" textAlign="center" mt={3}>
+        No results found.
+      </Typography>
+    );
+  }
+  
   return (
     <>
      <Typography

@@ -1,13 +1,19 @@
 import { Box } from "@mui/material";
-import { useState } from "react";
+import { useBookmark } from "../../context/BookmarkContext";
 
-function Bookmark() {
-  const [active, setActive] = useState(false);
+
+interface BookmarkProps {
+  title: string;
+}
+
+function Bookmark({ title }: BookmarkProps) {
+  const { toggleBookmark, isBookmarked } = useBookmark();
+  const active = isBookmarked(title);
 
   return (
     <Box
-      width="35px"
-      height="35px"
+      width={{xs: "25px", md:"35px"}}
+      height={{xs: "25px", md:"35px"}}
       borderRadius="50%"
       display="flex"
       justifyContent="center"
@@ -25,7 +31,7 @@ function Bookmark() {
           },
         },
       }}
-      onClick={() => setActive(!active)}
+      onClick={() => toggleBookmark(title)}
     >
       {!active ? (
         <img
@@ -41,6 +47,7 @@ function Bookmark() {
         <img
           src="src/assets/icons/activebookmark.svg"
           alt="activebookmark"
+          className="active"
           style={{
             width: "14px",
             height: "14px",

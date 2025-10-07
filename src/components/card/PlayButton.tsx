@@ -4,8 +4,8 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 function PlayButton() {
   return (
     <Box display={"flex"} alignItems="center" gap={1} sx={{backgroundColor: "rgba(255, 255, 255, 0.25)", borderRadius: "20px", padding: "2px 7px", width: "fit-content", cursor: "pointer", mt: 1}}>
-        <PlayCircleIcon fontSize="large"/>
-        <Typography variant="h4">Play</Typography>
+        <PlayCircleIcon sx={{fontSize: {xs: 24, md: 35}}}/>
+        <Typography variant="h4" fontSize={{xs: "16px", md: "20px"}}>Play</Typography>
     </Box>
   )
 }

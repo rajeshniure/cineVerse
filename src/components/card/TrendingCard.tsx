@@ -1,12 +1,21 @@
 import ContentCard from "./ContentCard";
 import { Box, } from "@mui/material";
 import { content } from "../../content/Content";
+import { useSearch } from "../../context/SearchContext";
 
 function TrendingCard() {
-    const trendingContent = content.filter(item => item.isTrending);
-  return (
+const { searchTerm } = useSearch(); 
+
+  const trendingContent = content.filter(
+    (item) =>
+      item.isTrending &&
+      item.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  if (trendingContent.length === 0) return null;
+    return (
     
-    <Box sx={{ mt: 3 }}>
+    <Box sx={{ mt: {xs: 1, md: 3} }}>
       
       <Box
         sx={{

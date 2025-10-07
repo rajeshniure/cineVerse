@@ -53,7 +53,7 @@ const ContentCard: React.FC<ContentCardProps> = ({ title, thumbnail,year,
           zIndex: 2,
         }}
       >
-        <Bookmark />
+        <Bookmark title={title} />
       </Box>
       {hovered && (
         <Box

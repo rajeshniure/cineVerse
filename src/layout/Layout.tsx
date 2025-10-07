@@ -8,7 +8,7 @@ const pathTitleMap: PathTitleMap = {
   "/": "Trending",
   "/movies": "Movies",
   "/series": "TV Series",
-  "/bookmarks": "Bookmarked Movies",
+  "/bookmarks": "Bookmarked",
 };
 
 const Layout = () => {
@@ -48,7 +48,7 @@ const Layout = () => {
 
         {/* Page Title */}
         <Typography
-          mt={3}
+          mt={{xs: 1, md: 3}}
           mb={2}
           textAlign={"left"}
           fontFamily={'Outfit Light'}

@@ -1,7 +1,6 @@
 import React from "react";
-
 import Typography from "@mui/material/Typography";
-import { Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import SideBarData from "../sideBar/SideBarData";
 
 interface ContentCardProps {
@@ -10,6 +9,7 @@ interface ContentCardProps {
   category?: string;
   rating?: string;
 }
+
 const ContentLabel: React.FC<ContentCardProps> = ({
   title,
   year,
@@ -23,39 +23,68 @@ const ContentLabel: React.FC<ContentCardProps> = ({
   });
 
   return (
-    <>
-      <Stack direction="row" spacing={1} sx={{ px: 1 }}>
-        <Typography variant="body2" color="text.secondary">
+    <Box sx={{ pl: 1 }}>
+      <Stack
+        direction="row"
+        alignItems="center"
+        spacing={1}
+        sx={{ color: "text.secondary" }}
+      >
+        <Typography
+          variant="body2"
+          sx={{
+            fontSize: { xs: 10, md: 14 },
+          }}
+        >
           {year}
         </Typography>
 
-        <Stack direction="row" spacing={0.3} alignItems="center">
-          <Typography variant="body2" color="text.secondary">
-            •
-          </Typography>
+        <Typography
+          variant="body2"
+          sx={{
+            fontSize: { xs: 10, md: 14 },
+          }}
+        >
+          •
+        </Typography>
+
+        <Stack direction="row" alignItems="center" spacing={0.5}>
           {iconData && (
-            <img
+            <Box
+              component="img"
               src={iconData.icon}
               alt={category}
-              style={{
-                width: "12px",
-                height: "12px",
+              sx={{
+                width: { xs: 8, md: 14 },
+                height: { xs: 8, md: 14 },
                 filter: "brightness(0) invert(0.8)",
+                opacity: 0.8,
               }}
             />
           )}
-
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: { xs: 10, md: 14 },
+              lineHeight: 1.2,
+            }}
+          >
             {category} • {rating}
           </Typography>
         </Stack>
       </Stack>
 
-      <Typography gutterBottom variant="h6" component="div" sx={{ px: 1}}>
+      <Typography
+        variant="h6"
+        component="div"
+        sx={{
+          fontSize: { xs: 14, sm: 16, md: 20 },
+          
+        }}
+      >
         {title}
       </Typography>
-      </>
-   
+    </Box>
   );
 };
 
