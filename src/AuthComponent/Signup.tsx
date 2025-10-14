@@ -1,64 +1,61 @@
-import { type FormEvent } from "react";
+import {type FormEvent } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import CustomInput from "../components/CustomInput";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
-  const navigate = useNavigate();
+function Signup() {
+  
+ const navigate = useNavigate();
 
-  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+  const handleSignup = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
+    const confirmPassword = formData.get("confirmPassword") as string;
 
-    if (!email || !password) {
+    if (!email || !password || !confirmPassword) {
       alert("All fields are required");
       return;
     }
 
-    const storedUser = localStorage.getItem("user");
-    if (!storedUser) {
-      alert("No user found! Please signup first.");
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
       return;
     }
 
-    const user = JSON.parse(storedUser);
-    if (user.email === email && user.password === password) {
-      localStorage.setItem("token", "fake-jwt-token");
-      navigate("/"); 
-    } else {
-      alert("Invalid email or password");
-    }
+    localStorage.setItem("user", JSON.stringify({ email, password }));
+    alert("Signup successful! Please login.");
+    navigate("/auth/login");
   };
 
   return (
     <Box bgcolor={"background.paper"} p={5} borderRadius={4} width={{ xs: "100%", md: "400px" }}>
       <Typography variant="h1" mb={3}>
-        Login
+        Sign up
       </Typography>
-    <form onSubmit={handleLogin}>
+    <form onSubmit={handleSignup}>
       <Box display={"flex"} flexDirection={"column"} gap={4}>
         <CustomInput placeholder="Email Address" type="email" name="email" />
         <CustomInput placeholder="Password" type="password" name="password" />
-        <Button label="Login to your account" type="submit" />
+        <CustomInput placeholder="Confirm password" type="password" name="confirmPassword" />
+        <Button label="Create account" type="submit" />
       </Box>
     </form>
-
       <Stack direction={"row"} mt={2} gap={1} justifyContent={"center"}>
-        <Typography>Don't have an account?</Typography>
+        <Typography>Already have an account?</Typography>
         <Typography
           color={"primary"}
           sx={{ cursor: "pointer" }}
-          onClick={() => navigate("/auth/signup")}
+          onClick={() => navigate("/auth/login")}
         >
-          Signup
+          Login
         </Typography>
       </Stack>
     </Box>
   );
 }
 
-export default Login;
+export default Signup;

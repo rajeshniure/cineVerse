@@ -1,9 +1,17 @@
 import { Box , TextField} from "@mui/material"
 
-function CustomInput({placeholder}:{placeholder:string}) {
+interface CustomInputProps {
+  placeholder: string;
+  type?: string;
+  name?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+function CustomInput({ placeholder, type, onChange, name }: CustomInputProps) {
   return (
     <Box>
-        <TextField id="standard-basic" variant="standard" fullWidth placeholder={placeholder}
+        <TextField variant="standard" fullWidth placeholder={placeholder} type={type} name={name}
+        onChange={onChange}
         sx={{
           "& .MuiInputBase-input": {
             color: "White",

@@ -5,11 +5,12 @@ function AuthLayout() {
   return (
     <Box
       sx={{
-        backgroundColor: 'secondary.main',
-        minHeight: '100%',
+        backgroundColor: 'background.default',
+        minHeight: '100vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        
       }}
     >
       <Outlet />
