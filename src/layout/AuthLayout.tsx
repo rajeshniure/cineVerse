@@ -10,6 +10,8 @@ function AuthLayout() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        px: { xs: 3, md: 2 },
+        overflow: 'hidden',
         
       }}
     >

@@ -1,5 +1,5 @@
 import { Box } from "@mui/material"
-import logo from "../../assets/icons/logo.svg";
+import logo from "/assets/icons/logo.svg";
 
 
 function SideBarLogo() {

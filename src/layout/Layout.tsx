@@ -21,7 +21,7 @@ const Layout = () => {
   useEffect(() => {
     setSearchTerm("");
   }, [location.pathname]);
-  const title = pathTitleMap[location.pathname] || "Home";
+  const title = pathTitleMap[location.pathname];
 
   return (
     <Box

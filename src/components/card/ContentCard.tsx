@@ -1,12 +1,12 @@
 import React from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
-import { Box} from "@mui/material";
-import type{ SxProps, Theme } from "@mui/material/styles";
+import { Box } from "@mui/material";
+import type { SxProps, Theme } from "@mui/material/styles";
 import Bookmark from "./Bookmark";
 import PlayButton from "./PlayButton";
+import { useNavigate } from "react-router-dom";
 import CardLabel from "./CardLabel";
-
 
 interface ContentCardProps {
   title: string;
@@ -20,31 +20,52 @@ interface ContentCardProps {
   rating?: string;
   showLabel?: boolean;
   cardMediaSx?: SxProps<Theme>;
+  cardSx?: SxProps<Theme>;
+  onPlay?: () => void;
 }
 
-const ContentCard: React.FC<ContentCardProps> = ({ title, thumbnail,year,
+const ContentCard: React.FC<ContentCardProps> = ({
+  title,
+  thumbnail,
+  year,
   category,
   rating,
-  showLabel = true, 
+  showLabel = true,
   cardMediaSx,
-  }) => {
-    
+  cardSx,
+  onPlay,
+}) => {
   const [hovered, setHovered] = React.useState(false);
+  const navigate = useNavigate();
+
+  // optional: navigate to content detail page
+  const handlePlayClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const encoded = encodeURIComponent(title);
+    navigate(`/content/${encoded}`);
+  };
 
   return (
-    <Card sx={{borderRadius: 2, mb: 1, position: "relative" 
-     }} 
+    <Card
+      sx={{ borderRadius: 2, mb: 1, position: "relative", ...cardSx }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      
     >
       <CardMedia
         component="img"
         image={thumbnail?.regular?.small}
         alt={title}
-        sx={{ objectFit: "cover", height: { xs: 110, md: 180},
+        sx={{
+          objectFit: "cover",
+          height: { xs: 110, md: 180 },
           transition: "filter 0.3s ease",
-          filter: hovered ? "brightness(0.5)" : "brightness(1)",...cardMediaSx, }}
+          filter: hovered ? "brightness(0.5)" : "brightness(1)",
+          ...cardMediaSx,
+        }}
       />
+
+      {/* Bookmark icon */}
       <Box
         sx={{
           position: "absolute",
@@ -55,6 +76,8 @@ const ContentCard: React.FC<ContentCardProps> = ({ title, thumbnail,year,
       >
         <Bookmark title={title} />
       </Box>
+
+      {/* Play button appears on hover */}
       {hovered && (
         <Box
           sx={{
@@ -65,10 +88,16 @@ const ContentCard: React.FC<ContentCardProps> = ({ title, thumbnail,year,
             zIndex: 3,
           }}
         >
-          <PlayButton />
+          <PlayButton
+            onClick={(e) => {
+              e.stopPropagation();
+              onPlay?.(); 
+              handlePlayClick(e);
+            }}
+          />
         </Box>
       )}
-      
+
       {showLabel && (
         <Box
           sx={{

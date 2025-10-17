@@ -35,7 +35,7 @@ function Bookmark({ title }: BookmarkProps) {
     >
       {!active ? (
         <img
-          src="src/assets/icons/bookmarkicon.svg"
+          src="../assets/icons/bookmarkicon.svg"
           alt="bookmark"
           className="normal"
           style={{
@@ -45,7 +45,7 @@ function Bookmark({ title }: BookmarkProps) {
         />
       ) : (
         <img
-          src="src/assets/icons/activebookmark.svg"
+          src="../assets/icons/activebookmark.svg"
           alt="activebookmark"
           className="active"
           style={{

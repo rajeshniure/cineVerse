@@ -5,10 +5,12 @@ import Movies from "../pages/movies/movies";
 import TvSeries from "../pages/tvSeries/TvSeries";
 import Bookmark from "../pages/bookmark/Bookmark";
 import NotFound from "../pages/notFound/notFound";
+import ContentDetail from "../pages/content/ContentDetail";
 
 import AuthLayout from "../layout/AuthLayout";
 import Signup from "../AuthComponent/Signup";
 import Login from "../AuthComponent/Login";
+import Logout from "../pages/logout/Logout";
 
 const ProtectedRoute = () => {
   const token = localStorage.getItem("token");
@@ -29,6 +31,8 @@ const AppRoutes = () => (
         <Route path="movies" element={<Movies />} />
         <Route path="series" element={<TvSeries />} />
         <Route path="bookmarks" element={<Bookmark />} />
+        <Route path="content/:title" element={<ContentDetail />} />
+        <Route path="profile" element={<Logout />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       </Route>
