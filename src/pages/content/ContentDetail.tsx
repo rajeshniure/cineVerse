@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { content } from "../../content/Content";
 import { Box, Typography } from "@mui/material";
 import ContentCard from "../../components/card/ContentCard";
+import Details from "../../components/card/Details";
 
 const VIDEO_ID = "dQw4w9WgXcQ";
 
@@ -52,6 +53,7 @@ export default function ContentDetail() {
             />
           </Box>
         ) : (
+          <Box display={"flex"} flexDirection="column" alignItems="center">
           <ContentCard
             title={item.title}
             thumbnail={item.thumbnail}
@@ -66,6 +68,15 @@ export default function ContentDetail() {
             cardSx={{ width: { xs: "100%", md: "80%" }, mx: "auto" }}
             onPlay={handlePlay}
           />
+          <Details
+            title={item.title}
+            year={item.year}
+            category={item.category}
+            rating={item.rating}
+            description={item.description}
+            onPlay={handlePlay}
+          />
+          </Box>
         )}
       </Box>
     </Box>
