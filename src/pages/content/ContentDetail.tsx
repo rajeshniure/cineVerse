@@ -23,17 +23,17 @@ export default function ContentDetail() {
   const handlePlay = () => setIsPlaying(true);
 
   return (
-    <Box sx={{ color: "white" }}>
+    <Box sx={{ color: "white", py:{xs:0, md:7} }}>
       <Box sx={{ flex: "0 0 auto" }}>
         {isPlaying ? (
           <Box
             sx={{
               position: "relative",
-              width: { xs: "100%", md: "80%" }, // responsive width
-              height: { xs: 200, md: 560 },   // responsive height
+              width: { xs: "100%", md: "80%" },
+              height: { xs: 200, md: 560 },
               borderRadius: 2,
               overflow: "hidden",
-              mx: "auto", // center horizontally
+              mx: "auto",
             }}
           >
             <iframe

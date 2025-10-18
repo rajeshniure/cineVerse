@@ -23,6 +23,12 @@ const Layout = () => {
   }, [location.pathname]);
   const title = pathTitleMap[location.pathname];
 
+  const hideSearchOnPaths = ["/content","/profile"];
+
+  const shouldShowSearch = !hideSearchOnPaths.some((path) =>
+    location.pathname.startsWith(path)
+  );
+
   return (
     <Box
       display="flex"
@@ -42,9 +48,9 @@ const Layout = () => {
         <SideBar />
       </Box>
 
-      {/* Main Content */}
       <Box flex={1} width="100%" px={2}>
-        {/* Search Bar */}
+        
+        {shouldShowSearch && (
         <Box
           height={{ xs: "auto", md: "60px" }}
           mt={{ xs: 2, md: 4 }}
@@ -53,6 +59,7 @@ const Layout = () => {
         >
           <SearchBar />
         </Box>
+        )}
 
         {/* Page Title */}
         <Typography
